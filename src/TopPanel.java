@@ -51,9 +51,9 @@ public class TopPanel extends JPanel {
 	private void addTile() {
 		title = new JLabel("QUẢN LÝ NHÂN SỰ");
 		title.setPreferredSize(new Dimension(600, 50));
-		// them title vao panel
+		//them title vao panel
 		this.add(title, BorderLayout.NORTH);
-		// căn chữ vào giữa
+		// căn chữ vào giữa 
 		title.setHorizontalAlignment(JLabel.CENTER);
 		// phóng to chữ
 		Font font = new Font("Arial", Font.BOLD, 35);
@@ -65,7 +65,7 @@ public class TopPanel extends JPanel {
 		content = new JPanel();
 		content.setPreferredSize(new Dimension(600, 100));
 		// khởi tạo layout để sắp xếp left và right
-		content.setLayout(new GridLayout(1, 2));// 2 cột 1 hàng
+		content.setLayout(new GridLayout(1, 2));//2 cột 1 hàng
 		// thêm left và right
 		addLeftContent();
 		addRightContent();
@@ -116,8 +116,8 @@ public class TopPanel extends JPanel {
 		});
 
 		// Add the position text field and combo box to the panel
-		chucvuLabeL = new JLabel("Chức vụ:");
-		chucvuLabeL.setHorizontalAlignment(JLabel.CENTER);
+	chucvuLabeL = new JLabel("Chức vụ:");
+	chucvuLabeL.setHorizontalAlignment(JLabel.CENTER);
 		chucvuLabeL.setForeground(Color.BLUE);
 		rightContent.add(chucvuLabeL);
 		rightContent.add(positionComboBox);
