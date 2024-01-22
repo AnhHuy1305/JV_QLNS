@@ -1,4 +1,6 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,6 +11,8 @@ import javax.swing.JFrame;
 
 public class MainFrame {
 	private  static Statement stmt;// stat
+	Danhsachnhansu danhsachnhansu;
+	JFrame frame;
 	public static void main(String[] args) {
 		MainFrame myFrame = new MainFrame();		
 		// ket noi cho database
@@ -55,15 +59,15 @@ public class MainFrame {
 		
 	}
 	private void createApplication() {
-		JFrame frame= new JFrame();
+	    frame= new JFrame();
 		frame.setResizable(false);// ngan phóng ta
 		// khai bao cac panel
 		TopPanel topPanel= new TopPanel(stmt);
 		CentrePanel centrePanel= new CentrePanel(stmt);
 		BottomPanel bottomPanel= new BottomPanel();
-		// cấp quyền nè
-		Danhsachnhansu danhsachnhansu= new Danhsachnhansu(stmt);
-		
+		// cấp quyền 
+		danhsachnhansu= new Danhsachnhansu(stmt);
+		addRefeshAction(centrePanel);
 		// khai báo layout để có thể sắp xếp
 		frame.setLayout(new BorderLayout());
 		// sau khi khai báo thì thêm vào frame thông qua add
@@ -74,5 +78,19 @@ public class MainFrame {
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+	}
+	private void addRefeshAction(CentrePanel centrePanel) {
+		centrePanel.reloadButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			      	frame.remove(danhsachnhansu);
+	                danhsachnhansu= new Danhsachnhansu(stmt);
+	                frame.add(danhsachnhansu,BorderLayout.SOUTH);
+	                // Cập nhật giao diện người dùng
+	                frame.revalidate();
+	                frame.repaint();
+			}
+		});
 	}
 }

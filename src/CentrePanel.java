@@ -30,7 +30,7 @@ public class CentrePanel extends JPanel {
 	// frame hien ra khi nhan nut tim kiem
 	private JFrame frame = null;
 	//
-	private RoundButton deleteButton, changebutton, searchButton;
+	public RoundButton deleteButton, changebutton, searchButton,reloadButton;
 	// id
 	private String idToDeletString = "";
 
@@ -74,6 +74,9 @@ public class CentrePanel extends JPanel {
 		searchButton = new RoundButton("Tìm thông tin");
 		searchButton.setPreferredSize(new Dimension(200, 30));
 		this.add(searchButton);
+		reloadButton = new RoundButton("Refresh danh sách");
+		reloadButton.setPreferredSize(new Dimension(200, 30));
+		this.add(reloadButton);
 
 	}
 
